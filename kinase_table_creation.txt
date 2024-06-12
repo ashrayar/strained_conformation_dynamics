@@ -1,0 +1,47 @@
+create table kinases(
+pdb_id varchar (6),
+resolution float(3,2),
+uniprot_id varchar(20),
+hrd_arg int,
+hrd_arg_residue varchar(3),
+dfg_asp int,
+ehelix_his int,
+ehelix_his_residue varchar(3),
+fhelix_asp int,
+lys int,
+glu int,
+hrd_phi int,
+hrd_psi int,
+dfg_phi int,
+dfg_psi int,
+activity varchar(20),
+hrd_strain varchar(20),
+dfg_strain varchar(20),
+hrd_fluct float(7,4),
+hrd_fluct_no_ligand float(7,4),
+dfg_fluct float(7,4),
+dfg_fluct_no_ligand float(7,4),
+hrd_bfactor float(7,4),
+dfg_bfactor float(7,4),
+family varchar(20),
+primary key (pdb_id)
+);
+
+
+create table kinase_hbonds(
+pdb_id varchar(6),
+hrd_fhel int,
+hrd_dfg int,
+hrd_arg_fhel int,
+hrd_asp_hrd_his int,
+ionic int,
+total int,
+primary key(pdb_id),
+foreign key(pdb_id) references kinases(pdb_id)
+);
+
+
+
+select count(pdb_id) from kinases where pdb_id in (select pdb_id from kinase_hbonds where (hrd_fhel=1 and hrd_dfg=1 and hrd_arg_fhel=1 and hrd_asp_hrd_his=1 and ionic=1 and total=5) or (total=6));
+
+alter table kinases add dfg_fluct_no_ligand float(7,4) after dfg_fluct;
