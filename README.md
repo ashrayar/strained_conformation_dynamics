@@ -1,2 +1,2 @@
-# strained_conformation_dynamics
-Collection of python and R scripts to run Normal Mode Analysis on proteins and analyze RMSF
+# Flexibility and dynamics of residues with conformational strain in proteins
+Collection of python and R scripts to run Normal Mode Analysis on proteins and analyze RMSF of specific residues. Please read **Ravikumar, A., de Brevern, A. G., & Srinivasan, N. (2021). Conformational strain indicated by ramachandran angles for the protein backbone is only weakly related to the flexibility. The Journal of Physical Chemistry B, 125(10), 2597-2606.** to find out more.
